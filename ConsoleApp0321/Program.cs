@@ -6,15 +6,65 @@ namespace ConsoleApp0321
 {
     class Program
     {
+        /*Car myCar = new Car();
+           myCar.StartEngin();
+           myCar.showInfo();
+           Console.WriteLine("請輸入新顏色:");
+           string i = Console.ReadLine();
+           myCar.changeColor(i);*/
         static async System.Threading.Tasks.Task Main(string[] args)
         {
-            /*Car myCar = new Car();
-            myCar.StartEngin();
-            myCar.showInfo();
-            Console.WriteLine("請輸入新顏色:");
-            string i = Console.ReadLine();
-            myCar.changeColor(i);*/
-            await HttpMain();
+            
+            bool play = true;
+            while (play)
+            {
+                Random random = new Random();
+                int ans = random.Next(1, 100);
+                //Console.WriteLine(ans);
+                int min = 1, max = 100;
+                for (int i = 5; i >0; i--)
+                {
+                    Console.WriteLine("請輸入" + min + "~" + max+" 剩餘次數:"+i);
+                    int user = Convert.ToInt32(Console.ReadLine());
+                    if(user <ans && user > min)
+                    {
+                        min = user;
+                    }
+                    else if (user > ans && user < max)
+                    {
+                        max = user;
+                    }
+                    else if(user == ans)
+                    {
+                        Console.WriteLine("猜對了!!");
+                        Console.WriteLine("答案是:" + ans);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("請輸入" + min + "~" + max+"的範圍喔");
+                    }
+                    if (user != ans && i == 1)
+                    {
+                        Console.WriteLine("失敗..");
+                        Console.WriteLine("答案是:"+ans);
+                        break;
+                    }
+
+                }
+
+                Console.WriteLine("是否繼續遊玩 1繼續0結束");
+                int end = Convert.ToInt32(Console.ReadLine());
+                if (end == 1)
+                {
+                    play = true;
+                }
+                else
+                {
+                    play = false;
+                }
+            }
+            //await HttpMain();
         }
         static readonly HttpClient client = new HttpClient();
         static async Task HttpMain()
