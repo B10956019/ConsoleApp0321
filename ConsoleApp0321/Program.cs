@@ -6,7 +6,13 @@ namespace ConsoleApp0321
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Car myCar = new Car();
+            myCar.StartEngin();
+            myCar.showInfo();
+            Console.WriteLine("請輸入新顏色:");
+            string i = Console.ReadLine();
+            myCar.changeColor(i);
         }
+
     }
 }
